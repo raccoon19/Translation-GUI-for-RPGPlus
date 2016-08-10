@@ -28,17 +28,16 @@ void tabView::on_treeWidget_customContextMenuRequested(const QPoint &pos)
 }
 
 void tabView::AddItem(){
-    QTreeWidgetItem* test = new QTreeWidgetItem(ui->treeWidget);
-    test->setText(0, "Key");
-    test->setText(1, "Translation");
-    test->setFlags(test->flags() | Qt::ItemIsEditable);
+    QTreeWidgetItem* item = new QTreeWidgetItem(ui->treeWidget);
+    item->setText(0, "Key");
+    item->setText(1, "Translation");
+    item->setFlags(item->flags() | Qt::ItemIsEditable);
 
-    ui->treeWidget->addTopLevelItem(test);
+    ui->treeWidget->addTopLevelItem(item);
 }
 
 void tabView::RemoveItem(){
     delete ui->treeWidget->currentItem();
-    qDebug() << "Item deleted.";
 }
 
 void tabView::AddChild(){
@@ -49,11 +48,11 @@ void tabView::AddChild(){
 
     ui->treeWidget->currentItem()->setText(1, "");
 
-    QTreeWidgetItem* test = new QTreeWidgetItem(ui->treeWidget->currentItem());
+    QTreeWidgetItem* item = new QTreeWidgetItem(ui->treeWidget->currentItem());
 
-    test->setText(0, "K");
-    test->setText(1, "V");
-    test->setFlags(test->flags() | Qt::ItemIsEditable);
+    item->setText(0, "K");
+    item->setText(1, "V");
+    item->setFlags(test->flags() | Qt::ItemIsEditable);
 }
 
 void tabView::onTreeWidgetItemDoubleClicked(QTreeWidgetItem* item, int column){

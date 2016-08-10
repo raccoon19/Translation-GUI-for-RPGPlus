@@ -42,3 +42,12 @@ void util::getAllChilds(QTreeWidgetItem* topLevel, YAML::Emitter& out, bool from
     }
     out << YAML::EndMap;
 }
+
+void util::saveFile(QString filename, QString yaml){
+    QFile file(filename);
+    if (!file.open(QIODevice::WriteOnly | QIODevice::Text))
+            return;
+    QTextStream out(&file);
+    out << yaml;
+    file.close();
+}

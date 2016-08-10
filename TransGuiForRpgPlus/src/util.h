@@ -4,6 +4,7 @@
 #include <QTreeWidget>
 #include <QTreeWidgetItem>
 #include <QDebug>
+#include <QFile>
 
 #include <yaml-cpp/yaml.h>
 
@@ -16,6 +17,7 @@ public:
     static QString mapTreeToYaml(QTreeWidget* tree);
     static void getAllChilds(QTreeWidgetItem* topLevel, YAML::Emitter& out, bool fromTopLevel);
 
+    static void saveFile(QString filename, QString yaml);
 signals:
 
 public slots:

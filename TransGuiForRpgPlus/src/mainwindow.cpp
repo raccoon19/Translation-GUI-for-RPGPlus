@@ -1,16 +1,10 @@
 #include "mainwindow.h"
-#include "ui_mainwindow.h"
-#include "tabview.h"
-
-#include "util.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    ui->tabWidget->removeTab(0);
-    ui->tabWidget->removeTab(0);
 }
 
 MainWindow::~MainWindow()
@@ -20,17 +14,29 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_actionNew_triggered()
 {
-    ui->tabWidget->addTab(new tabView(), QIcon(QString("")), QString("Test"));
+    QString filename = QFileDialog::getSaveFileName(this, tr("New file"),
+                                                    "",
+                                                    tr("YAML (*.yaml)"));
+    ui->tabWidget->addTab(new tabView(), QIcon(QString("")), filename);
 }
 
 void MainWindow::on_actionSave_triggered()
 {
     auto* tab = (tabView*)ui->tabWidget->widget(ui->tabWidget->currentIndex());
 
-    util::mapTreeToYaml(tab->ui->treeWidget);
+    QString yaml = util::mapTreeToYaml(tab->ui->treeWidget);
+
+    QString filename = ui->tabWidget->tabText(ui->tabWidget->currentIndex());
+    util::saveFile(filename, yaml);
+
 }
 
 void MainWindow::on_tabWidget_tabCloseRequested(int index)
 {
     ui->tabWidget->removeTab(index);
+}
+
+void MainWindow::on_actionClose_triggered()
+{
+    QApplication::quit();
 }

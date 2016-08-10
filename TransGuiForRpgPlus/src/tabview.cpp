@@ -47,10 +47,12 @@ void tabView::AddChild(){
         return;
     }
 
+    ui->treeWidget->currentItem()->setText(1, "");
+
     QTreeWidgetItem* test = new QTreeWidgetItem(ui->treeWidget->currentItem());
 
-    test->setText(0, "");
-    test->setText(1, "");
+    test->setText(0, "K");
+    test->setText(1, "V");
     test->setFlags(test->flags() | Qt::ItemIsEditable);
 }
 

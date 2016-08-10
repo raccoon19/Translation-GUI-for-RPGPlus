@@ -3,6 +3,11 @@
 
 #include <QMainWindow>
 #include <QTreeWidget>
+#include <QFileDialog>
+
+#include "ui_mainwindow.h"
+#include "tabview.h"
+#include "util.h"
 
 namespace Ui {
 class MainWindow;
@@ -18,10 +23,9 @@ public:
 
 private slots:
     void on_actionNew_triggered();
-
     void on_actionSave_triggered();
-
     void on_tabWidget_tabCloseRequested(int index);
+    void on_actionClose_triggered();
 
 private:
     Ui::MainWindow *ui;

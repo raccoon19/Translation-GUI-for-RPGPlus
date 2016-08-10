@@ -61,6 +61,8 @@ YAML::Node util::readYamlFile(QString filename){
         qDebug() << "Only Map is supported. May crash.";
     }
 
+    fin.close();
+
     return tree;
 }
 

@@ -1,10 +1,13 @@
 #include "tabview.h"
 
-tabView::tabView(QWidget *parent) :
+tabView::tabView(QWidget *parent, QTreeWidget* widget) :
     QWidget(parent),
     ui(new Ui::tabView)
 {
     ui->setupUi(this);
+    if(widget){
+        ui->treeWidget = widget;
+    }
     ui->treeWidget->setContextMenuPolicy(Qt::CustomContextMenu);
     ui->treeWidget->setColumnCount(2);
     ui->treeWidget->setHeaderLabels(QStringList() << "Key" << "Translation");
@@ -52,7 +55,7 @@ void tabView::AddChild(){
 
     item->setText(0, "K");
     item->setText(1, "V");
-    item->setFlags(test->flags() | Qt::ItemIsEditable);
+    item->setFlags(item->flags() | Qt::ItemIsEditable);
 }
 
 void tabView::onTreeWidgetItemDoubleClicked(QTreeWidgetItem* item, int column){

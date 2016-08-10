@@ -27,6 +27,8 @@ private slots:
     void on_tabWidget_tabCloseRequested(int index);
     void on_actionClose_triggered();
 
+    void on_actionOpen_triggered();
+
 private:
     Ui::MainWindow *ui;
 };

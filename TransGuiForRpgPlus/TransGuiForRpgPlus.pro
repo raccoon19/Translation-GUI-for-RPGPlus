@@ -33,3 +33,5 @@ else:unix: LIBS += -L$$PWD/../yaml-cpp/build/ -lyaml-cpp
 
 INCLUDEPATH += $$PWD/../yaml-cpp/include
 DEPENDPATH += $$PWD/../yaml-cpp/include
+
+DEFINES += YAML_CPP_DLL

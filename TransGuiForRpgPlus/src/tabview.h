@@ -7,7 +7,6 @@
 #include <QDebug>
 
 #include "ui_tabview.h"
-#include "util.h"
 
 #include <yaml-cpp/yaml.h>
 
@@ -20,7 +19,7 @@ class tabView : public QWidget
     Q_OBJECT
 
 public:
-    explicit tabView(QWidget *parent = 0);
+    explicit tabView(QWidget *parent = 0, QTreeWidget* widget = 0);
     ~tabView();
 
     Ui::tabView *ui;

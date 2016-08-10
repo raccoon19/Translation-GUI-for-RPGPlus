@@ -14,6 +14,7 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_actionNew_triggered()
 {
+    //get filename
     QString filename = QFileDialog::getSaveFileName(this, tr("New file"),
                                                     "",
                                                     tr("YAML (*.yaml)"));
